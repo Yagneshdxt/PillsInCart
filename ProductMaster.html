@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../Styles/style.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="../Styles/prettyPhoto.css" type="text/css" media="screen" />
+    [xxxMetaTagxxx]
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //$("#divheaderCont").load("../Header.html");
+            //$("#divBodyCont").load();
+            $("#divFooterCont").load("../Footer.html");
+            $("#divCommBody").load("../bodyComman.html", function () {
+                tabNavi('.tab-navi');
+            });
+            $.ajax(
+            {
+                type: "GET",
+                url: "../ProductCreation/DynamicProductMaster.aspx?ProdId=[xxxProductIDxxx]",
+                success: function (result) {
+                    if ($(result).find('#divValidStatus').find("span").text() == "Success") {
+                        $("#divheaderCont").html($(result).find('#divHeader').html());
+                        $("#divLinkDiv").html($(result).find('#divLinkDiv').html());
+                        $("#tickerContainer").html($(result).find('#tickerContainer').html());
+                        $("#divProdBody").html($(result).find('#productContent').html());
+                        $("#divProdaccoridan").html($(result).find('#divProdaccoridan').html());
+                    } else {
+                        window.location.href = "../index.html";
+                    }
+                },
+                error: function (result) {
+                    window.location.href = "../index.html"
+                }
+            });
+
+
+            $(".accordation-item-header").live('click', function () {
+                $('.accordation-item-body').slideUp('normal');
+                if ($(this).parent().find('.accordation-item-body').is(':hidden') == true) {
+                    $(this).parent().find('.accordation-item-body').slideDown('normal');
+                }
+                return false;
+            });
+
+        });
+
+
+        function AddProdPriceToCart(prdPriceId) {
+
+            // ../BuyProduct/viewcart.aspx?pID=" + Eval("ProdPriceId").ToString()
+            var hdnPrPriceId = document.getElementById("hdnPrPriceId");
+            hdnPrPriceId.value = prdPriceId;
+            document.forms[0].action = "../BuyProduct/viewcart.aspx";
+            document.forms[0].method = "post";
+            document.forms[0].submit();
+            return false;
+        }
+
+        function tabNavi(tab) {
+            if ($(tab + ' .has-submenu a').size()) {
+                $('.wrapper').hover(function (e) {
+
+                });
+
+                $(tab + ' a:not(.submn)').hover(function (e) {
+                    if (!$(this).hasClass('active')) {
+                        p = $(this).parents(tab).find('a.active').removeClass('active').attr('href');
+                        $(this).parents(tab).find('a.active-trail').removeClass('active-trail');
+                        $(this).parents(tab).find('li ul').hide();
+                        $(p).hide()
+                        $($(this).addClass('active').attr('href')).show();
+
+                        $(this).parents('li.has-submenu').find('a.submn').addClass('active-trail');
+                    }
+                    return false;
+                });
+            }
+        }
+
+
+        function setLogOut() {
+            $.ajax({
+                type: "POST",
+                url: "../PageMethods.aspx/LogOutUser",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.d == "Success") {
+                        // window.location.reload();
+                        $('#divLogin').attr("style", "display:block");
+                        $('#divLogOut').attr("style", "display:none");
+                        $('#lblCartValu').text("0.00");
+                        $("#lblCartValu").html("0.00");
+                    }
+                },
+                error: function (result) {
+                    //window.location.href = "../index.html"
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <form>
+    <div id="divheaderCont">
+    </div>
+    <div id="divBodyCont">
+        <!--Main body-->
+        <div class="container">
+            <div class="span-6 sidebar">
+                <!--Search widget-->
+                <div id="divLinkDiv">
+                    <!--fill links content here-->
+                </div>
+                <div class="span-6 widget">
+                    <ul id="little-post">
+                        <li><a href="../Affiliate/BecomeAnAffiliate.aspx">
+                            <img src="../images/offer/affiliate.jpg" alt="become an affiliate" /></a></li>
+                        <li>
+                            <img src="../images/offer/1.jpg" alt="free express mail shipping" /></li>
+                        <li>
+                            <img src="../images/offer/money-back.jpg" alt="Money back gareenty" /></li>
+                        <li>
+                            <img src="../images/offer/10-offer.jpg" alt="10% extra pills on next purchase" /></li>
+                        <li>
+                            <img src="../images/offer/satisfaction.jpg" alt="satisfaction gareented" /></li>
+                    </ul>
+                </div>
+                <!--Little posts-->
+                <div class="span-6 widget">
+                    <div class="title">
+                        <h3>
+                            Tistimonial
+                        </h3>
+                    </div>
+                    <div class="testimonial">
+                        <div id="tickerContainer">
+                            <!--fill testimonials content here-->
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+
+                                //cache the ticker
+                                var ticker = $("#tickerContainer").live("#ticker");
+
+                                //wrap dt:dd pairs in divs
+                                ticker.children().filter("dt").each(function () {
+
+                                    var dt = $(this),
+		                            container = $("<div>");
+
+                                    dt.next().appendTo(container);
+                                    dt.prependTo(container);
+
+                                    container.appendTo(ticker);
+                                });
+
+                                //hide the scrollbar
+                                ticker.css("overflow", "hidden");
+
+                                //animator function
+                                function animator(currentItem) {
+
+                                    //work out new anim duration
+                                    var distance = currentItem.height();
+                                    duration = (distance + parseInt(currentItem.css("marginTop"))) / 0.025;
+
+                                    //animate the first child of the ticker
+                                    currentItem.animate({ marginTop: -distance }, duration, "linear", function () {
+
+                                        //move current item to the bottom
+                                        currentItem.appendTo(currentItem.parent()).css("marginTop", 0);
+
+                                        //recurse
+                                        animator(currentItem.parent().children(":first"));
+                                    });
+                                };
+
+                                //start the ticker
+                                animator(ticker.children(":first"));
+
+                                //set mouseenter
+                                ticker.mouseenter(function () {
+
+                                    //stop current animation
+                                    ticker.children().stop();
+
+                                });
+
+                                //set mouseleave
+                                ticker.mouseleave(function () {
+
+                                    //resume animation
+                                    animator(ticker.children(":first"));
+
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <!--Blog category-->
+            <div class="span-18 last">
+                <div class="home-products">
+                    <div id="divProdBody">
+                        <!--Body Comman-->
+                    </div>
+                    <div id="divCommBody">
+                        <!--Fill commanBody-->
+                    </div>
+                    <div id="divProdaccoridan">
+                        <!--Fill Product Accordian-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divFooterCont">
+    </div>
+    <input type="hidden" id="hdnPrPriceId" name="hdnPrPriceId" />
+    </form>
+</body>
+</html>

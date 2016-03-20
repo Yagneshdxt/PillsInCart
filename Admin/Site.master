@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script src='<%# ResolveUrl("~/Scripts/jquery-1.7.1.js") %>' type="text/javascript"></script>
+    <script src='<%# ResolveUrl("~/Scripts/jquery-1.7.1.min.js") %>' type="text/javascript"></script>
+    <script src='<%# ResolveUrl("~/Scripts/jquery-1.7.min.js") %>' type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager ID="smsiteMaster" runat="server" />
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Admin Section
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <div id="LoginDiv" runat="server" visible="false">
+                    <asp:Label Text="" ID="lblUsreName" runat="server" />
+                    <asp:LinkButton Text="LogOut" ID="lnkLogOut" runat="server" OnClick="lnkLogOut_Click" />
+                </div>
+                <div id="LogOutdiv" runat="server">
+                    <asp:HyperLink NavigateUrl="~/Admin/Account/AdminLogin.aspx" Text="Log In" runat="server" />
+                </div>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="" Text="Product" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/AddRootCategory.aspx" Text="Root Category"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/AddCategory.aspx" Text="Sub Category"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="#" Text="Product Master">
+                                <asp:MenuItem NavigateUrl="~/Admin/AddProduct.aspx" Text="Add Product"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/ViewProduct.aspx" Text="Edit Product"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Blog" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/AddBlog.aspx" Text="Create Post"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/AddBlogCategory.aspx" Text="Add Category"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/AddBlogTags.aspx" Text="Add Tags"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/ApproveComments.aspx" Text="Approve Comments">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Discount" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/Discountpage.aspx" Text="Create Discount"></asp:MenuItem>
+                            <%--<asp:MenuItem NavigateUrl="~/Admin/FlatDiscount.aspx" Text="Flat Discount"></asp:MenuItem>--%>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Shipping" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/AddShipping.aspx" Text="Add/Modifiy Shipping">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Index" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/indexproduct.aspx" Text="Index Controle"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/MedicalInfoVisibility.aspx" Text="Medical Prescription">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Admin/PaymentDetialsVisibility.aspx" Text="Payment Options">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Testimonials" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/ApproveTestimonial.aspx" Text="Active/Deactive">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Orders" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/ViewAndProcessesOrders.aspx" Text="Process Orders">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="" Text="Affiliate" Selectable="false">
+                            <asp:MenuItem NavigateUrl="~/Admin/AcDeAffiliate.aspx" Text="Active/Deactive"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>

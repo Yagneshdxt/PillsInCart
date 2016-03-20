@@ -1,0 +1,165 @@
+#diapo-wrapper{
+	display: block;
+	overflow: hidden;
+	position: relative;
+	color: #f7f7f7;
+	width: 710px;
+	margin-bottom: 20px;
+}
+
+.diapo_slide p{
+	text-shadow: none;
+	color: #000000;
+	margin-left: 205px;
+	margin-bottom:10px;
+	font-size: 16px;
+	line-height: 1.5em;
+	text-shadow: 0 1px 0 #fff;
+		font-family: 'GnuolaneFreeRegular';
+
+}
+.diapo_slide h3{
+	text-shadow: none;
+	color: #B71314;
+	margin-top: 20px;
+	margin-left: 205px;
+	font-weight: bold;
+	font-family: 'GnuolaneFreeRegular';
+	font-size: 25px;
+	margin-bottom: 10px;
+	text-shadow: 0 1px 0 #fff;
+}
+ul li{
+	text-shadow:none;
+
+}
+.pix_diapo {
+	min-height: 270px;
+	height: 270px;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+	width: 710px;
+}
+.pix_diapo > div {
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+#pix_prev, #pix_next {
+	cursor: pointer;
+	display: block;
+	height: 25px;
+	width:22px;
+	position: absolute;
+	left: auto !important;
+	right:0 !important;
+	top:240px;
+	z-index: 1001;
+}
+#pix_prev {
+	background: url(../images/diapo/navi/prev.png) no-repeat;
+	right:25px !important;
+}
+#pix_prev:hover{
+	background-position: 0 -25px;
+}
+#pix_next {
+	background: url(../images/diapo/navi/next.png) no-repeat;
+}
+#pix_next:hover{
+	background-position: 0 -25px;
+}
+#pix_pag {
+	margin: 0 auto;
+	position: relative;
+	width: 940px;
+	z-index: 1002;
+}
+#pix_commands {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 26px;
+	margin: 15px 0 0 13px;
+	position: relative;
+	width: 24px;
+}
+
+#pix_pag_ul {
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+#pix_pag_ul > li {
+	cursor: pointer;
+	display: block;
+	.display: inline-block;
+	float: left;
+	list-style: none;
+	margin: 0 10px 0 0;
+	padding: 20px 8px 0;
+	text-align: center;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+
+.pix_relativize {
+	overflow: hidden;
+	position: relative;
+}
+.imgFake {
+	cursor: pointer;
+}
+.elemHover {
+	position: absolute;
+}
+.caption {
+	top: 0px;
+	display: block;
+	font-size: 12px;
+	padding: 0;
+	width: 648px;
+	text-shadow: none;
+	margin-top: 55px;
+}
+.capLeft{
+	left: 0;
+}
+.capRight{
+	right: 0;
+}
+
+.ui-loader {
+	display: none;
+}
+.diapo_slide1 p{
+	text-shadow: none;
+	color: #000000;
+	margin-left: 10px;
+	font-weight: bold;
+	margin-bottom:10px;
+	font-size: 14px;
+	line-height: 1.5em;
+	text-shadow: 0 1px 0 #fff;
+
+}
+
+
+	
+
+.diapo_slide1 h3{
+	text-shadow: none;
+	color: #B71314;
+	margin-top: 170px;
+	margin-left: 10px;
+	font-weight: bold;
+	font-family: 'Inder', sans-serif;
+	font-size: 25px;
+	margin-bottom: 4px;
+	text-shadow: 0 1px 0 #fff;
+}

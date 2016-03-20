@@ -1,0 +1,103 @@
+﻿.red
+{
+	color: #8a1f11;
+}
+
+/*gridH*/
+div.gridH
+{
+	clear: both;
+}
+gridHinner
+{
+	margin-top: 50px;
+	float: left;
+	margin-bottom: 25px;
+}
+.addDataLink
+{
+	float: right;
+	display: inline;
+	padding: 0 0 10px 0;
+}
+div.gridH table
+{
+	clear: both;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+div.gridH table th
+{
+	background: #eaeaea !important;
+	text-align: center;
+}
+div.gridH table th, div.gridH table td
+{
+	padding: 7px 10px;
+	background: #eaeaea;
+}
+div.gridH table th a
+{
+	color: #000;
+}
+div.gridH table td
+{
+	background: #FFF;
+	padding: 5px 10px !important;
+	vertical-align: top; /*color: #C60000;*/
+	color: #0485EE;
+}
+.quickshopheader
+{
+	color: #C60000;
+	font-size: 24px;
+	margin: 0 240px;
+}
+div.gridH table td .callbackTextBox
+{
+	width: 200px !important;
+	height: 50px !important;
+}
+div.gridH table input
+{
+	overflow: visible;
+	height: 18px;
+}
+div.gridH table td textarea
+{
+	overflow: auto;
+	max-height: 50px;
+	max-width: 250px;
+}
+
+div.gridH table td span.dateBox
+{
+	display: block;
+	width: 75px;
+	text-align: left;
+}
+
+
+div.gridH table table
+{
+	width: auto;
+}
+div.gridH table table td
+{
+	border: none;
+	float: left;
+	padding: 2px 3px;
+}
+.select
+{
+	width: 119px;
+	background-color: #F4FCFF;
+	border: 1px solid #3399CC;
+	color: #004B97;
+	font-family: Arial;
+	font-size: 12px;
+	line-height: 13px;
+	text-decoration: none;
+	text-indent: 2px;
+}
